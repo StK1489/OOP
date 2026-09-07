@@ -9,7 +9,7 @@ class SortTest {
     void testSimpleSort() {
         int[] input = {5, 4, 3, 2, 1};
         int[] expected = {1, 2, 3, 4, 5};
-        Sort.heapsort(input);  // ← изменяет input
+        Sort.heapsort(input);
         assertArrayEquals(expected, input);
     }
 
@@ -63,8 +63,7 @@ class SortTest {
 
     @Test
     void testNullArray() {
-        Sort.heapsort(null);  // Не должно упасть с ошибкой
-        // Если дошло сюда — тест пройден
+        Sort.heapsort(null);
     }
 
 }

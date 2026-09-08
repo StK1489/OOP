@@ -1,7 +1,16 @@
 package ru.nsu.vkuznetsov.Task_1_1_1;
 
+/**
+ * Реализация пирамидальной сортировки.
+ * Сортирует масив за O (n log n) по времени и O(1) по памяти
+ */
 public class Sort {
 
+    /**
+     * Сортирует массив методом пирамидальной сортировки..
+     *
+     * @param arr массив для сортировки
+     */
     public static void heapsort(int[] arr) {
         if (arr == null || arr.length <= 1) {
             return;
@@ -17,6 +26,14 @@ public class Sort {
             heapify(arr, i, 0);
         }
     }
+
+    /**
+     * Восстанавливает свойство кучи для поддерева с корнем i.
+     *
+     * @param arr массив
+     * @param n размер кучи
+     * @param i индекс корня
+     */
     private static void heapify(int[] arr, int n, int i) {
         int biggest = i;
         int left = 2 * i + 1;

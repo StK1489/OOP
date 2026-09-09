@@ -28,7 +28,19 @@ jobs:
       - name: Run build script
         run: ./build.sh
 
-      - name: Run tests (JUnit)
+      - name: Download JUnit
         run: |
-          javac -cp ".:lib/*" -d build/test-classes src/test/java/ru/nsu/vkuznetsov/Task_1_1_1/SortTest.java
-          java -cp ".:lib/*:build/classes:build/test-classes" org.junit.platform.console.ConsoleLauncher --scan-classpath
+          mkdir -p lib
+          wget -q -O lib/junit-platform-console-standalone-1.10.0.jar \
+            https://repo1.maven.org/maven2/org/junit/platform/junit-platform-console-standalone/1.10.0/junit-platform-console-standalone-1.10.0.jar
+
+      - name: Compile and run tests
+        run: |
+          mkdir -p build/test-classes
+          javac -cp "build/classes:lib/*" \
+                -d build/test-classes \
+                src/test/java/ru/nsu/vkuznetsov/Task_1_1_1/SortTest.java
+          java -cp "build/classes:build/test-classes:lib/*" \
+            org.junit.platform.console.ConsoleLauncher \
+            --scan-classpath \
+            --include-classname ru.nsu.vkuznetsov.Task_1_1_1.SortTest

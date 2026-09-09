@@ -1,8 +1,11 @@
+# This is a basic workflow to help you get started with Actions
+
 name: CI
 
+# Controls when the workflow will run
 on:
   pull_request:
-    branches: [ "main" ]
+    branches: [ "main" ]  
   workflow_dispatch:
 
 jobs:
@@ -12,35 +15,51 @@ jobs:
     defaults:
       run:
         working-directory: ./Task_1_1_1
-
     steps:
       - uses: actions/checkout@v3
+      
+      - name: Setup Gradle
+        uses: gradle/gradle-build-action@v2
 
-      - name: Set up JDK 21
-        uses: actions/setup-java@v3
+      - name: Make gradlew executable
+        run: chmod +x ./gradlew
+    
+      - name: Execute Gradle build
+        run: ./gradlew build
+
+      - name: Generate Jacoco report
+        run: ./gradlew jacocoTestReport
+
+      - name: Check coverage and publish
+        id: jacoco
+        uses: madrapps/jacoco-report@v1.2
         with:
-          java-version: '21'
-          distribution: 'temurin'
+          paths: ./Task_1_1_1/build/reports/jacoco/test/jacocoTestReport.xml
+          token: ${{ secrets.GITHUB_TOKEN }}
+          min-coverage-overall: 80
+          min-coverage-changed-files: 80
 
-      - name: Make build.sh executable
-        run: chmod +x ./build.sh
+      - name: Generate javadoc
+        run: ./gradlew javadoc
 
-      - name: Run build script
-        run: ./build.sh
+      - name: Publish javadoc
+        uses: JamesIves/github-pages-deploy-action@v4
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          branch: gh-pages
+          clean: true
+          folder: ./Task_1_1_1/build/docs/javadoc
+          target-folder: Task_1_1_1
 
-      - name: Download JUnit
-        run: |
-          mkdir -p lib
-          wget -q -O lib/junit-platform-console-standalone-1.10.0.jar \
-            https://repo1.maven.org/maven2/org/junit/platform/junit-platform-console-standalone/1.10.0/junit-platform-console-standalone-1.10.0.jar
+  checkstyle:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
 
-      - name: Compile and run tests
-        run: |
-          mkdir -p build/test-classes
-          javac -cp "build/classes:lib/*" \
-                -d build/test-classes \
-                src/test/java/ru/nsu/vkuznetsov/Task_1_1_1/SortTest.java
-          java -cp "build/classes:build/test-classes:lib/*" \
-            org.junit.platform.console.ConsoleLauncher \
-            --scan-classpath \
-            --include-classname ru.nsu.vkuznetsov.Task_1_1_1.SortTest
+      - name: Run check style
+        uses: nikitasavinov/checkstyle-action@master
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          checkstyle_config: '.github/google_checks.xml'
+          reporter: 'github-pr-check'

@@ -23,8 +23,8 @@ class SortTest {
 
     @Test
     void testSingleElement() {
-        int[] input = {42};
-        int[] expected = {42};
+        int[] input = {1488};
+        int[] expected = {1488};
         Sort.heapsort(input);
         assertArrayEquals(expected, input);
     }
@@ -39,8 +39,8 @@ class SortTest {
 
     @Test
     void testReverseSorted() {
-        int[] input = {9, 7, 5, 3, 1};
-        int[] expected = {1, 3, 5, 7, 9};
+        int[] input = {9, 7, 5, 3, 0};
+        int[] expected = {0, 3, 5, 7, 9};
         Sort.heapsort(input);
         assertArrayEquals(expected, input);
     }
@@ -66,4 +66,8 @@ class SortTest {
         Sort.heapsort(null);
     }
 
+    @Test
+    void testMainExecution() {
+        Main.main(new String[]{});
+    }
 }

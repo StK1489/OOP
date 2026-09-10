@@ -39,8 +39,8 @@ class SortTest {
 
     @Test
     void testReverseSorted() {
-        int[] input = {9, 6, 5, 3, 2};
-        int[] expected = {2, 3, 5, 6, 9};
+        int[] input = {9, 7, 5, 3, 0};
+        int[] expected = {0, 3, 5, 7, 9};
         Sort.heapsort(input);
         assertArrayEquals(expected, input);
     }

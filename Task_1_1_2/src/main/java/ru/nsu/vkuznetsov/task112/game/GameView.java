@@ -1,8 +1,8 @@
-package ru.nsu.vkuznetsov.task_1_1_2.game;
+package ru.nsu.vkuznetsov.task112.game;
 
-import ru.nsu.vkuznetsov.task_1_1_2.domain.Dealer;
-import ru.nsu.vkuznetsov.task_1_1_2.domain.Hand;
-import ru.nsu.vkuznetsov.task_1_1_2.domain.RoundResult;
+import ru.nsu.vkuznetsov.task112.domain.Dealer;
+import ru.nsu.vkuznetsov.task112.domain.Hand;
+import ru.nsu.vkuznetsov.task112.domain.RoundResult;
 
 /**
  * Интерфейс для общения игры с пользовательским интерфейсом.

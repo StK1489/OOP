@@ -1,11 +1,11 @@
-package ru.nsu.vkuznetsov.task_1_1_2.ui;
+package ru.nsu.vkuznetsov.task112.ui;
 
 import java.util.List;
 
-import ru.nsu.vkuznetsov.task_1_1_2.domain.Card;
-import ru.nsu.vkuznetsov.task_1_1_2.domain.Dealer;
-import ru.nsu.vkuznetsov.task_1_1_2.domain.Hand;
-import ru.nsu.vkuznetsov.task_1_1_2.domain.RoundResult;
+import ru.nsu.vkuznetsov.task112.domain.Card;
+import ru.nsu.vkuznetsov.task112.domain.Dealer;
+import ru.nsu.vkuznetsov.task112.domain.Hand;
+import ru.nsu.vkuznetsov.task112.domain.RoundResult;
 
 /**
  * Печатает состояние игры в консоль.

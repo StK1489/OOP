@@ -1,4 +1,4 @@
-package ru.nsu.vkuznetsov.task_1_1_2.domain;
+package ru.nsu.vkuznetsov.task112.domain;
 
 /**
  * Достоинство игральной карты.

@@ -4,7 +4,37 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="32f60123-6346-46eb-b899-502efdd1b05c" name="Changes" comment="" />
+    <list default="true" id="32f60123-6346-46eb-b899-502efdd1b05c" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ru/nsu/vkuznetsov/task_1_1_2/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/nsu/vkuznetsov/task112/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ru/nsu/vkuznetsov/task_1_1_2/domain/Card.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/nsu/vkuznetsov/task112/domain/Card.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ru/nsu/vkuznetsov/task_1_1_2/domain/Dealer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/nsu/vkuznetsov/task112/domain/Dealer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ru/nsu/vkuznetsov/task_1_1_2/domain/DecisionProvider.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/nsu/vkuznetsov/task112/domain/DecisionProvider.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ru/nsu/vkuznetsov/task_1_1_2/domain/Deck.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/nsu/vkuznetsov/task112/domain/Deck.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ru/nsu/vkuznetsov/task_1_1_2/domain/Gender.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/nsu/vkuznetsov/task112/domain/Gender.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ru/nsu/vkuznetsov/task_1_1_2/domain/Hand.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/nsu/vkuznetsov/task112/domain/Hand.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ru/nsu/vkuznetsov/task_1_1_2/domain/Participant.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/nsu/vkuznetsov/task112/domain/Participant.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ru/nsu/vkuznetsov/task_1_1_2/domain/Player.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/nsu/vkuznetsov/task112/domain/Player.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ru/nsu/vkuznetsov/task_1_1_2/domain/Rank.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/nsu/vkuznetsov/task112/domain/Rank.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ru/nsu/vkuznetsov/task_1_1_2/domain/RoundResult.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/nsu/vkuznetsov/task112/domain/RoundResult.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ru/nsu/vkuznetsov/task_1_1_2/domain/Suit.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/nsu/vkuznetsov/task112/domain/Suit.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ru/nsu/vkuznetsov/task_1_1_2/game/Game.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/nsu/vkuznetsov/task112/game/Game.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ru/nsu/vkuznetsov/task_1_1_2/game/GameView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/nsu/vkuznetsov/task112/game/GameView.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ru/nsu/vkuznetsov/task_1_1_2/game/Round.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/nsu/vkuznetsov/task112/game/Round.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ru/nsu/vkuznetsov/task_1_1_2/game/RoundResolver.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/nsu/vkuznetsov/task112/game/RoundResolver.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ru/nsu/vkuznetsov/task_1_1_2/game/Score.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/nsu/vkuznetsov/task112/game/Score.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ru/nsu/vkuznetsov/task_1_1_2/ui/ConsolePrinter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/nsu/vkuznetsov/task112/ui/ConsolePrinter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ru/nsu/vkuznetsov/task_1_1_2/ui/ConsoleReader.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/nsu/vkuznetsov/task112/ui/ConsoleReader.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ru/nsu/vkuznetsov/task_1_1_2/ui/ConsoleView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/nsu/vkuznetsov/task112/ui/ConsoleView.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/ru/nsu/vkuznetsov/task_1_1_2/domain/CardTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/ru/nsu/vkuznetsov/task_1_1_2/domain/CardTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/ru/nsu/vkuznetsov/task_1_1_2/domain/DealerTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/ru/nsu/vkuznetsov/task_1_1_2/domain/DealerTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/ru/nsu/vkuznetsov/task_1_1_2/domain/DeckTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/ru/nsu/vkuznetsov/task_1_1_2/domain/DeckTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/ru/nsu/vkuznetsov/task_1_1_2/domain/HandTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/ru/nsu/vkuznetsov/task_1_1_2/domain/HandTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/ru/nsu/vkuznetsov/task_1_1_2/domain/RankTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/ru/nsu/vkuznetsov/task_1_1_2/domain/RankTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/ru/nsu/vkuznetsov/task_1_1_2/domain/SuitTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/ru/nsu/vkuznetsov/task_1_1_2/domain/SuitTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/ru/nsu/vkuznetsov/task_1_1_2/game/RoundResolverTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/ru/nsu/vkuznetsov/task_1_1_2/game/RoundResolverTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/ru/nsu/vkuznetsov/task_1_1_2/game/ScoreTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/ru/nsu/vkuznetsov/task_1_1_2/game/ScoreTest.java" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />

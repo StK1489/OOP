@@ -1,10 +1,10 @@
-package ru.nsu.vkuznetsov.task_1_1_2.ui;
+package ru.nsu.vkuznetsov.task112.ui;
 
-import ru.nsu.vkuznetsov.task_1_1_2.domain.DecisionProvider;
-import ru.nsu.vkuznetsov.task_1_1_2.domain.Dealer;
-import ru.nsu.vkuznetsov.task_1_1_2.domain.Hand;
-import ru.nsu.vkuznetsov.task_1_1_2.domain.RoundResult;
-import ru.nsu.vkuznetsov.task_1_1_2.game.GameView;
+import ru.nsu.vkuznetsov.task112.domain.DecisionProvider;
+import ru.nsu.vkuznetsov.task112.domain.Dealer;
+import ru.nsu.vkuznetsov.task112.domain.Hand;
+import ru.nsu.vkuznetsov.task112.domain.RoundResult;
+import ru.nsu.vkuznetsov.task112.game.GameView;
 
 /**
  * Консольный интерфейс: фасад над ConsolePrinter и ConsoleReader.

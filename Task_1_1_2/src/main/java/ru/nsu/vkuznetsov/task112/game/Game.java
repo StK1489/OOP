@@ -1,9 +1,9 @@
-package ru.nsu.vkuznetsov.task_1_1_2.game;
+package ru.nsu.vkuznetsov.task112.game;
 
-import ru.nsu.vkuznetsov.task_1_1_2.domain.Deck;
-import ru.nsu.vkuznetsov.task_1_1_2.domain.Dealer;
-import ru.nsu.vkuznetsov.task_1_1_2.domain.Player;
-import ru.nsu.vkuznetsov.task_1_1_2.domain.RoundResult;
+import ru.nsu.vkuznetsov.task112.domain.Deck;
+import ru.nsu.vkuznetsov.task112.domain.Dealer;
+import ru.nsu.vkuznetsov.task112.domain.Player;
+import ru.nsu.vkuznetsov.task112.domain.RoundResult;
 
 /**
  * Игра в блэкджек: цикл раундов и счёт.

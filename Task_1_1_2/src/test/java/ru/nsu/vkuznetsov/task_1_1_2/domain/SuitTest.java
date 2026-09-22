@@ -1,6 +1,7 @@
-package ru.nsu.vkuznetsov.task_1_1_2.domain;
+package ru.nsu.vkuznetsov.task112.domain;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+
 import org.junit.jupiter.api.Test;
 
 class SuitTest {

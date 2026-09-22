@@ -1,11 +1,11 @@
-package ru.nsu.vkuznetsov.task_1_1_2;
+package ru.nsu.vkuznetsov.task112;
 
-import ru.nsu.vkuznetsov.task_1_1_2.domain.Dealer;
-import ru.nsu.vkuznetsov.task_1_1_2.domain.Player;
-import ru.nsu.vkuznetsov.task_1_1_2.game.Game;
-import ru.nsu.vkuznetsov.task_1_1_2.ui.ConsolePrinter;
-import ru.nsu.vkuznetsov.task_1_1_2.ui.ConsoleReader;
-import ru.nsu.vkuznetsov.task_1_1_2.ui.ConsoleView;
+import ru.nsu.vkuznetsov.task112.domain.Dealer;
+import ru.nsu.vkuznetsov.task112.domain.Player;
+import ru.nsu.vkuznetsov.task112.game.Game;
+import ru.nsu.vkuznetsov.task112.ui.ConsolePrinter;
+import ru.nsu.vkuznetsov.task112.ui.ConsoleReader;
+import ru.nsu.vkuznetsov.task112.ui.ConsoleView;
 
 /**
  * Точка входа в игру Блэкджек.

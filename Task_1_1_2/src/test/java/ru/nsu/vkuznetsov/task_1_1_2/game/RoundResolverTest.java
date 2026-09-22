@@ -1,13 +1,15 @@
-package ru.nsu.vkuznetsov.task_1_1_2.game;
+package ru.nsu.vkuznetsov.task112.game;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+
 import org.junit.jupiter.api.Test;
-import ru.nsu.vkuznetsov.task_1_1_2.domain.Card;
-import ru.nsu.vkuznetsov.task_1_1_2.domain.Dealer;
-import ru.nsu.vkuznetsov.task_1_1_2.domain.Player;
-import ru.nsu.vkuznetsov.task_1_1_2.domain.Rank;
-import ru.nsu.vkuznetsov.task_1_1_2.domain.RoundResult;
-import ru.nsu.vkuznetsov.task_1_1_2.domain.Suit;
+
+import ru.nsu.vkuznetsov.task112.domain.Card;
+import ru.nsu.vkuznetsov.task112.domain.Dealer;
+import ru.nsu.vkuznetsov.task112.domain.Player;
+import ru.nsu.vkuznetsov.task112.domain.Rank;
+import ru.nsu.vkuznetsov.task112.domain.RoundResult;
+import ru.nsu.vkuznetsov.task112.domain.Suit;
 
 class RoundResolverTest {
 

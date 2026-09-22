@@ -1,8 +1,10 @@
-package ru.nsu.vkuznetsov.task_1_1_2.game;
+package ru.nsu.vkuznetsov.task112.game;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+
 import org.junit.jupiter.api.Test;
-import ru.nsu.vkuznetsov.task_1_1_2.domain.RoundResult;
+
+import ru.nsu.vkuznetsov.task112.domain.RoundResult;
 
 class ScoreTest {
 

@@ -1,6 +1,6 @@
-package ru.nsu.vkuznetsov.task_1_1_2.game;
+package ru.nsu.vkuznetsov.task112.game;
 
-import ru.nsu.vkuznetsov.task_1_1_2.domain.RoundResult;
+import ru.nsu.vkuznetsov.task112.domain.RoundResult;
 
 /**
  * Счёт игры: количество побед игрока и дилера.

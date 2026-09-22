@@ -1,9 +1,10 @@
 plugins {
     id 'java'
+    id 'application'
     id 'jacoco'
 }
 
-group = 'ru.nsu.shadrina'
+group = 'ru.nsu.vkuznetsov.Task_1_1_2'
 version = '1.0-SNAPSHOT'
 
 repositories {
@@ -11,15 +12,22 @@ repositories {
 }
 
 dependencies {
-    testImplementation platform('org.junit:junit-bom:5.9.1')
+    testImplementation platform('org.junit:junit-bom:5.10.0')
     testImplementation 'org.junit.jupiter:junit-jupiter'
+    testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
 }
 
 test {
     useJUnitPlatform()
+    finalizedBy jacocoTestReport
+}
+
+application {
+    mainClass = 'ru.nsu.vkuznetsov.Task_1_1_2.Main'
 }
 
 jacocoTestReport {
+    dependsOn test
     reports {
         xml.required = true
     }

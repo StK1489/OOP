@@ -23,7 +23,7 @@ test {
 }
 
 application {
-    mainClass = 'ru.nsu.vkuznetsov.Task_1_1_2.Main'
+    mainClass = 'ru.nsu.vkuznetsov.Task_1_1_1.Main'
 }
 
 jacocoTestReport {

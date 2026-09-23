@@ -3,7 +3,6 @@ package ru.nsu.vkuznetsov.task112.game;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import org.junit.jupiter.api.Test;
-
 import ru.nsu.vkuznetsov.task112.domain.Card;
 import ru.nsu.vkuznetsov.task112.domain.Dealer;
 import ru.nsu.vkuznetsov.task112.domain.Player;

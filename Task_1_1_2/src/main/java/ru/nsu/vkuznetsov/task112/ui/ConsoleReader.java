@@ -33,7 +33,8 @@ public class ConsoleReader {
                 if (count >= MIN_DECK_COUNT && count <= MAX_DECK_COUNT) {
                     return count;
                 }
-                System.out.println("Введите число от " + MIN_DECK_COUNT + " до " + MAX_DECK_COUNT + ".");
+                System.out.println("Введите число от " + MIN_DECK_COUNT
+                        + " до " + MAX_DECK_COUNT + ".");
             } catch (NumberFormatException e) {
                 System.out.println("Это не число. Попробуйте снова.");
             }
@@ -47,7 +48,8 @@ public class ConsoleReader {
      */
     public boolean readHitOrStand() {
         while (true) {
-            System.out.println("Введите \"1\", чтобы взять карту, и \"0\", чтобы остановиться.");
+            System.out.println("Введите \"1\", чтобы взять карту, "
+                    + "и \"0\", чтобы остановиться.");
             String input = scanner.nextLine().trim();
             if ("1".equals(input)) {
                 return true;

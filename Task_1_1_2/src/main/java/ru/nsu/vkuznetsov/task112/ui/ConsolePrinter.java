@@ -1,7 +1,6 @@
 package ru.nsu.vkuznetsov.task112.ui;
 
 import java.util.List;
-
 import ru.nsu.vkuznetsov.task112.domain.Card;
 import ru.nsu.vkuznetsov.task112.domain.Dealer;
 import ru.nsu.vkuznetsov.task112.domain.Hand;
@@ -56,11 +55,16 @@ public class ConsolePrinter {
     public void printRoundResult(RoundResult result, int playerWins, int dealerWins) {
         switch (result) {
             case PLAYER_WIN -> System.out.println(
-                    "Вы выиграли раунд! Счет " + playerWins + ":" + dealerWins + " в вашу пользу.");
+                    "Вы выиграли раунд! Счет "
+                            + playerWins + ":" + dealerWins
+                            + " в вашу пользу.");
             case DEALER_WIN -> System.out.println(
-                    "Вы проиграли раунд. Счет " + playerWins + ":" + dealerWins + " в пользу дилера.");
+                    "Вы проиграли раунд. Счет "
+                            + playerWins + ":" + dealerWins
+                            + " в пользу дилера.");
             case DRAW -> System.out.println(
                     "Ничья. Счет " + playerWins + ":" + dealerWins + ".");
+            default -> throw new IllegalStateException("Unknown result: " + result);
         }
     }
 }

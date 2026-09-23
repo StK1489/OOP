@@ -4,7 +4,6 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 
 import org.junit.jupiter.api.Test;
-
 import ru.nsu.vkuznetsov.task112.domain.Dealer;
 import ru.nsu.vkuznetsov.task112.domain.Deck;
 import ru.nsu.vkuznetsov.task112.domain.Hand;
@@ -74,7 +73,6 @@ class RoundTest {
         Round round = new Round(deck, player, dealer, stubView, resolver);
         round.play();
 
-        // Игрок брал карты, пока не перебрал — карт больше 2
         assertEquals(true, player.getHand().getCards().size() > 2);
     }
 
@@ -88,7 +86,6 @@ class RoundTest {
         Round round = new Round(deck, player, dealer, stubView, resolver);
         round.play();
 
-        // Из колоды взято минимум 4 карты (2 игроку + 2 дилеру)
         assertEquals(true, deck.size() < 52);
     }
 }

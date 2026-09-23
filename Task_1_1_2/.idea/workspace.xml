@@ -4,12 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="32f60123-6346-46eb-b899-502efdd1b05c" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ru/nsu/vkuznetsov/task112/ui/ConsolePrinter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/nsu/vkuznetsov/task112/ui/ConsolePrinter.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ru/nsu/vkuznetsov/task112/ui/ConsoleReader.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/nsu/vkuznetsov/task112/ui/ConsoleReader.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/ru/nsu/vkuznetsov/task_1_1_2/game/RoundTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/ru/nsu/vkuznetsov/task_1_1_2/game/RoundTest.java" afterDir="false" />
-    </list>
+    <list default="true" id="32f60123-6346-46eb-b899-502efdd1b05c" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />

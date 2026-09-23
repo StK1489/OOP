@@ -2,6 +2,7 @@ package ru.nsu.vkuznetsov.task112.game;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import org.junit.jupiter.api.Test;
 import ru.nsu.vkuznetsov.task112.domain.Dealer;
@@ -73,7 +74,7 @@ class RoundTest {
         Round round = new Round(deck, player, dealer, stubView, resolver);
         round.play();
 
-        assertEquals(true, player.getHand().getCards().size() > 2);
+        assertTrue(player.isBusted() || player.hasBlackjack());
     }
 
     @Test
@@ -86,6 +87,6 @@ class RoundTest {
         Round round = new Round(deck, player, dealer, stubView, resolver);
         round.play();
 
-        assertEquals(true, deck.size() < 52);
+        assertTrue(deck.size() < 52);
     }
 }

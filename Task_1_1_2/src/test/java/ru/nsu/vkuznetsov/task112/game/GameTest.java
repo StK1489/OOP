@@ -11,7 +11,33 @@ import ru.nsu.vkuznetsov.task112.domain.RoundResult;
 
 class GameTest {
 
-    private final GameView stubView = new GameView() {
+    private final GameView oneRoundView = new GameView() {
+        private int roundCount = 0;
+
+        @Override
+        public void showPlayerHand(Hand hand) {
+        }
+
+        @Override
+        public void showDealerHand(Dealer dealer) {
+        }
+
+        @Override
+        public void showRoundResult(RoundResult result, int playerWins, int dealerWins) {
+        }
+
+        @Override
+        public void showMessage(String message) {
+        }
+
+        @Override
+        public boolean askPlayAgain() {
+            roundCount++;
+            return roundCount == 1;
+        }
+    };
+
+    private final GameView noRoundView = new GameView() {
         @Override
         public void showPlayerHand(Hand hand) {
         }
@@ -39,21 +65,30 @@ class GameTest {
         Player player = new Player(() -> false);
         Dealer dealer = new Dealer();
         assertThrows(IllegalArgumentException.class,
-                () -> new Game(0, player, dealer, stubView));
+                () -> new Game(0, player, dealer, noRoundView));
     }
 
     @Test
-    void testGamePlaysOneRound() {
+    void testGameNoRounds() {
         Player player = new Player(() -> false);
         Dealer dealer = new Dealer();
-        Game game = new Game(1, player, dealer, stubView);
+        Game game = new Game(1, player, dealer, noRoundView);
         assertDoesNotThrow(game::play);
     }
 
     @Test
-    void testGameConstructorWithTwoDecks() {
+    void testGameOneRound() {
         Player player = new Player(() -> false);
         Dealer dealer = new Dealer();
-        assertDoesNotThrow(() -> new Game(2, player, dealer, stubView));
+        Game game = new Game(1, player, dealer, oneRoundView);
+        assertDoesNotThrow(game::play);
+    }
+
+    @Test
+    void testGameTwoDecksOneRound() {
+        Player player = new Player(() -> false);
+        Dealer dealer = new Dealer();
+        Game game = new Game(2, player, dealer, oneRoundView);
+        assertDoesNotThrow(game::play);
     }
 }

@@ -1,7 +1,7 @@
 package ru.nsu.vkuznetsov.task112.game;
 
-import ru.nsu.vkuznetsov.task112.domain.Deck;
 import ru.nsu.vkuznetsov.task112.domain.Dealer;
+import ru.nsu.vkuznetsov.task112.domain.Deck;
 import ru.nsu.vkuznetsov.task112.domain.Player;
 import ru.nsu.vkuznetsov.task112.domain.RoundResult;
 
@@ -15,8 +15,6 @@ public class Game {
     private final GameView view;
     private final Score score;
     private final RoundResolver resolver;
-
-    private int roundNumber;
 
     /**
      * Создаёт игру.
@@ -36,7 +34,6 @@ public class Game {
         this.view = view;
         this.score = new Score();
         this.resolver = new RoundResolver();
-        this.roundNumber = 0;
     }
 
     /**
@@ -44,7 +41,10 @@ public class Game {
      */
     public void play() {
         view.showMessage("Добро пожаловать в Блэкджек!");
+        int roundNumber = 0;
         while (wantToPlay()) {
+            roundNumber++;
+            view.showMessage("Раунд " + roundNumber);
             playRound();
         }
     }
@@ -53,9 +53,6 @@ public class Game {
      * Играет один раунд.
      */
     private void playRound() {
-        roundNumber++;
-        view.showMessage("Раунд " + roundNumber);
-
         player.resetHand();
         dealer.resetHand();
 

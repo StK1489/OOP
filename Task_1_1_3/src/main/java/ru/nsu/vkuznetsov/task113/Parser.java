@@ -45,13 +45,13 @@ public class Parser {
         }
         if (input.charAt(pos) == '(') {
             pos++;
-            Expression left = parseExpression();
+            final Expression left = parseExpression();
             if (pos >= input.length()) {
                 throw new IllegalArgumentException("Ожидался оператор");
             }
-            char op = input.charAt(pos);
+            final char op = input.charAt(pos);
             pos++;
-            Expression right = parseExpression();
+            final Expression right = parseExpression();
             if (pos >= input.length() || input.charAt(pos) != ')') {
                 throw new IllegalArgumentException("Ожидалась закрывающая скобка");
             }
@@ -79,12 +79,12 @@ public class Parser {
             throw new IllegalArgumentException("Ожидалось число после минуса");
         }
 
-        int start = pos;
+        final int start = pos;
         while (pos < input.length()
                 && Character.isLetterOrDigit(input.charAt(pos))) {
             pos++;
         }
-        String token = input.substring(start, pos);
+        final String token = input.substring(start, pos);
 
         if (token.isEmpty()) {
             throw new IllegalArgumentException("Ожидалось число или переменная");

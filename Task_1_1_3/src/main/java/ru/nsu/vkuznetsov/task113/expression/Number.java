@@ -1,4 +1,4 @@
-package ru.nsu.vkuznetsov.task113;
+package ru.nsu.vkuznetsov.task113.expression;
 
 import java.util.Map;
 

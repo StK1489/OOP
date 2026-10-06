@@ -1,6 +1,8 @@
-package ru.nsu.vkuznetsov.task113;
+package ru.nsu.vkuznetsov.task113.operations;
 
 import java.util.Map;
+
+import ru.nsu.vkuznetsov.task113.expression.Expression;
 
 /**
  * Разность двух выражений.
@@ -18,11 +20,6 @@ public class Sub extends BinaryOperation {
     }
 
     @Override
-    protected String getOperator() {
-        return "-";
-    }
-
-    @Override
     public Expression derivative(String var) {
         return new Sub(left.derivative(var), right.derivative(var));
     }
@@ -30,5 +27,10 @@ public class Sub extends BinaryOperation {
     @Override
     public int eval(Map<String, Integer> vars) {
         return left.eval(vars) - right.eval(vars);
+    }
+
+    @Override
+    protected String getOperator() {
+        return "-";
     }
 }

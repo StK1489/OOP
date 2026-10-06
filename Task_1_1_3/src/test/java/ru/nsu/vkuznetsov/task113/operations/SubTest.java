@@ -1,10 +1,14 @@
-package ru.nsu.vkuznetsov.task113;
+package ru.nsu.vkuznetsov.task113.operations;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import java.util.HashMap;
 import java.util.Map;
 import org.junit.jupiter.api.Test;
+
+import ru.nsu.vkuznetsov.task113.expression.Expression;
+import ru.nsu.vkuznetsov.task113.expression.Number;
+import ru.nsu.vkuznetsov.task113.expression.Variable;
 
 class SubTest {
 

@@ -1,6 +1,8 @@
-package ru.nsu.vkuznetsov.task113;
+package ru.nsu.vkuznetsov.task113.expression;
 
 import java.util.Map;
+
+import ru.nsu.vkuznetsov.task113.parser.AssignmentParser;
 
 /**
  * Абстрактное математическое выражение.

@@ -1,6 +1,9 @@
-package ru.nsu.vkuznetsov.task113;
+package ru.nsu.vkuznetsov.task113.parser;
 
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -19,17 +22,24 @@ public class AssignmentParser {
         if (assignments == null || assignments.isBlank()) {
             return vars;
         }
-        String[] parts = assignments.split(";");
-        for (String part : parts) {
-            String[] kv = part.split("=");
-            if (kv.length != 2) {
+
+        List<String> assignmentList = new ArrayList<>(
+                Arrays.asList(assignments.split(";")));
+
+        for (String assignment : assignmentList) {
+            List<String> keyValue = new ArrayList<>(
+                    Arrays.asList(assignment.split("=")));
+
+            if (keyValue.size() != 2) {
                 throw new IllegalArgumentException(
-                        "Некорректное означивание: " + part);
+                        "Некорректное означивание: " + assignment);
             }
-            String name = kv[0].trim();
-            int value = Integer.parseInt(kv[1].trim());
+
+            String name = keyValue.get(0).trim();
+            int value = Integer.parseInt(keyValue.get(1).trim());
             vars.put(name, value);
         }
+
         return vars;
     }
 }

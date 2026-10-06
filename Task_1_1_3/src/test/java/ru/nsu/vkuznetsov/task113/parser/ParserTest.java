@@ -1,4 +1,4 @@
-package ru.nsu.vkuznetsov.task113;
+package ru.nsu.vkuznetsov.task113.parser;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
@@ -6,6 +6,8 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 import java.util.HashMap;
 import java.util.Map;
 import org.junit.jupiter.api.Test;
+
+import ru.nsu.vkuznetsov.task113.expression.Expression;
 
 class ParserTest {
 
@@ -42,6 +44,16 @@ class ParserTest {
         Expression e = new Parser("(-5+3)").parse();
         assertEquals("(-5+3)", e.print());
         assertEquals(-2, e.eval(new HashMap<>()));
+    }
+
+    @Test
+    void testParseNegativeVariable() {
+        Expression e = new Parser("(-x+3)").parse();
+        assertEquals("((0-x)+3)", e.print());
+
+        Map<String, Integer> vars = new HashMap<>();
+        vars.put("x", 10);
+        assertEquals(-7, e.eval(vars));
     }
 
     @Test

@@ -1,4 +1,6 @@
-package ru.nsu.vkuznetsov.task113;
+package ru.nsu.vkuznetsov.task113.operations;
+
+import ru.nsu.vkuznetsov.task113.expression.Expression;
 
 /**
  * Бинарная операция.
@@ -18,13 +20,6 @@ public abstract class BinaryOperation extends Expression {
         this.right = right;
     }
 
-    /**
-     * Возвращает символ операции.
-     *
-     * @return оператор ("+", "-", "*", "/")
-     */
-    protected abstract String getOperator();
-
     @Override
     public String print() {
         return "("
@@ -33,4 +28,11 @@ public abstract class BinaryOperation extends Expression {
                 + right.print()
                 + ")";
     }
+
+    /**
+     * Возвращает символ операции.
+     *
+     * @return оператор ("+", "-", "*", "/")
+     */
+    protected abstract String getOperator();
 }

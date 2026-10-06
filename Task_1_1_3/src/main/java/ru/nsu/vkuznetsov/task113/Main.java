@@ -1,7 +1,6 @@
 package ru.nsu.vkuznetsov.task113;
 
 import java.util.Scanner;
-
 import ru.nsu.vkuznetsov.task113.expression.Expression;
 import ru.nsu.vkuznetsov.task113.parser.Parser;
 

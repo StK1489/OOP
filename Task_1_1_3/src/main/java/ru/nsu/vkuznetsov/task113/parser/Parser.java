@@ -2,7 +2,6 @@ package ru.nsu.vkuznetsov.task113.parser;
 
 import java.util.ArrayList;
 import java.util.List;
-
 import ru.nsu.vkuznetsov.task113.expression.Expression;
 import ru.nsu.vkuznetsov.task113.expression.Number;
 import ru.nsu.vkuznetsov.task113.expression.Variable;
@@ -85,13 +84,13 @@ public class Parser {
         }
         if (tokens.get(pos).equals("(")) {
             pos++;
-            Expression left = parseExpression();
+            final Expression left = parseExpression();
             if (pos >= tokens.size()) {
                 throw new IllegalArgumentException("Ожидался оператор");
             }
-            String op = tokens.get(pos);
+            final String op = tokens.get(pos);
             pos++;
-            Expression right = parseExpression();
+            final Expression right = parseExpression();
             if (pos >= tokens.size() || !tokens.get(pos).equals(")")) {
                 throw new IllegalArgumentException("Ожидалась закрывающая скобка");
             }

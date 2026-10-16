@@ -5,18 +5,17 @@ import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Map;
 import java.util.Set;
-
 import ru.nsu.vkuznetsov.task121.graph.AbstractGraph;
 import ru.nsu.vkuznetsov.task121.graph.Edge;
 
 /**
  * Граф в виде матрицы инцидентности.
  *
- * <p>Строки матрицы соответствуют вершинам, столбцы - рёбрам.
+ * <p>Строки матрицы соответствуют вершинам, столбцы — рёбрам.
  * В ячейке хранится коэффициент инцидентности:
- * {@code +1}, если вершина - начало ребра,
- * {@code -1}, если вершина - конец (для ориентированного графа),
- * {@code 0} - если вершина не инцидентна ребру.
+ * {@code +1}, если вершина — начало ребра,
+ * {@code -1}, если вершина — конец (для ориентированного графа),
+ * {@code 0} — если вершина не инцидентна ребру.
  *
  * <p>Для неориентированного графа обе концевые вершины имеют {@code +1}.
  *
@@ -28,6 +27,8 @@ public class IncidenceMatrixGraph<V> extends AbstractGraph<V> {
     private final Set<Edge<V>> edgeSet = new HashSet<>();
 
     /**
+     * Создаёт граф в виде матрицы инцидентности.
+     *
      * @param directed {@code true}, если граф ориентированный
      */
     public IncidenceMatrixGraph(boolean directed) {

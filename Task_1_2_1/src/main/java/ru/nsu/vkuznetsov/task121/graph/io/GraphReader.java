@@ -5,16 +5,18 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.List;
 import java.util.function.Function;
-
 import ru.nsu.vkuznetsov.task121.graph.Graph;
 
 /**
  * Чтение графа из файла формата «список рёбер»:
- * каждая строка - две вершины {@code from to}.
+ * каждая строка — две вершины {@code from to}.
  * Пустые строки и строки, начинающиеся с {@code #}, игнорируются.
  */
 public final class GraphReader {
 
+    /**
+     * Приватный конструктор: класс утилитный, создавать объекты не нужно.
+     */
     private GraphReader() {
     }
 

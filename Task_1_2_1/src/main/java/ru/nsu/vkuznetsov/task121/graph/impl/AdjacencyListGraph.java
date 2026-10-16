@@ -23,6 +23,8 @@ public class AdjacencyListGraph<V> extends AbstractGraph<V> {
     private final Set<Edge<V>> edgeSet = new HashSet<>();
 
     /**
+     * Создаёт граф в виде списка смежности.
+     *
      * @param directed {@code true}, если граф ориентированный
      */
     public AdjacencyListGraph(boolean directed) {

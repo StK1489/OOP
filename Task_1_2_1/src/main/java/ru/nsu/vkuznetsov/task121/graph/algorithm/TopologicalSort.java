@@ -1,7 +1,6 @@
 package ru.nsu.vkuznetsov.task121.graph.algorithm;
 
 import java.util.List;
-
 import ru.nsu.vkuznetsov.task121.graph.Graph;
 
 /**

@@ -6,7 +6,6 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Queue;
-
 import ru.nsu.vkuznetsov.task121.graph.Graph;
 
 /**
@@ -20,6 +19,9 @@ import ru.nsu.vkuznetsov.task121.graph.Graph;
  */
 public class KahnTopologicalSort<V> implements TopologicalSort<V> {
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public List<V> sort(Graph<V> graph) {
         Map<V, Integer> inDegree = new HashMap<>();

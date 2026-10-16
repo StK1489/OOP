@@ -11,7 +11,7 @@ import ru.nsu.vkuznetsov.task121.graph.Edge;
 /**
  * Граф в виде матрицы смежности.
  *
- * <p>Хранит для каждой вершины отображение «сосед -> наличие ребра».
+ * <p>Хранит для каждой вершины отображение «сосед → наличие ребра».
  * Логически эквивалентно квадратной матрице N×N,
  * но реализовано через {@link Map}, чтобы работать с любыми вершинами,
  * а не только с числовыми индексами.
@@ -24,6 +24,8 @@ public class AdjacencyMatrixGraph<V> extends AbstractGraph<V> {
     private final Set<Edge<V>> edgeSet = new HashSet<>();
 
     /**
+     * Создаёт граф в виде матрицы смежности.
+     *
      * @param directed {@code true}, если граф ориентированный
      */
     public AdjacencyMatrixGraph(boolean directed) {

@@ -4,7 +4,6 @@ import java.io.IOException;
 import java.nio.file.Path;
 import java.util.List;
 import java.util.Scanner;
-
 import ru.nsu.vkuznetsov.task121.graph.Graph;
 import ru.nsu.vkuznetsov.task121.graph.algorithm.KahnTopologicalSort;
 import ru.nsu.vkuznetsov.task121.graph.algorithm.TopologicalSort;
@@ -13,8 +12,15 @@ import ru.nsu.vkuznetsov.task121.graph.impl.AdjacencyMatrixGraph;
 import ru.nsu.vkuznetsov.task121.graph.impl.IncidenceMatrixGraph;
 import ru.nsu.vkuznetsov.task121.graph.io.GraphReader;
 
+/**
+ * Точка входа: читает граф из файла, сравнивает три реализации
+ * и запускает топологическую сортировку.
+ */
 public class Main {
 
+    /**
+     * @param args аргументы командной строки (не используются)
+     */
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
 

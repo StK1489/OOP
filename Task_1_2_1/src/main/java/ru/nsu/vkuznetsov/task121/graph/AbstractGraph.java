@@ -17,6 +17,8 @@ public abstract class AbstractGraph<V> implements Graph<V> {
     private final boolean directed;
 
     /**
+     * Создаёт граф с заданной ориентированностью.
+     *
      * @param directed {@code true}, если граф ориентированный
      */
     protected AbstractGraph(boolean directed) {
@@ -24,6 +26,8 @@ public abstract class AbstractGraph<V> implements Graph<V> {
     }
 
     /**
+     * Возвращает признак ориентированности графа.
+     *
      * @return {@code true}, если граф ориентированный
      */
     public final boolean isDirected() {
@@ -31,9 +35,11 @@ public abstract class AbstractGraph<V> implements Graph<V> {
     }
 
     /**
-     * Два графа равны, если совпадают ориентированность,
-     * множество вершин и множество рёбер.
-     * Конкретный способ хранения при этом не важен.
+     * Сравнивает графы по содержимому: ориентированность, множество вершин
+     * и множество рёбер. Конкретный способ хранения при этом не важен.
+     *
+     * @param o объект для сравнения
+     * @return {@code true}, если графы равны
      */
     @Override
     public boolean equals(Object o) {
@@ -48,14 +54,22 @@ public abstract class AbstractGraph<V> implements Graph<V> {
                 && edges().equals(other.edges());
     }
 
+    /**
+     * Возвращает хеш-код графа.
+     *
+     * @return хеш-код
+     */
     @Override
     public int hashCode() {
         return Objects.hash(directed, vertices(), edges());
     }
 
     /**
-     * Формат: {@code {A: [B, C], B: [C], C: []}}.
+     * Возвращает строковое представление в виде списка смежности:
+     * {@code {A: [B, C], B: [C], C: []}}.
      * Порядок обхода вершин определяется реализацией {@link #vertices()}.
+     *
+     * @return строковое представление
      */
     @Override
     public String toString() {

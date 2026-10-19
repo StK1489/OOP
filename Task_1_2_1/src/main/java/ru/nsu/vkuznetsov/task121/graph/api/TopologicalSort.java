@@ -1,7 +1,6 @@
-package ru.nsu.vkuznetsov.task121.graph.algorithm;
+package ru.nsu.vkuznetsov.task121.graph.api;
 
 import java.util.List;
-import ru.nsu.vkuznetsov.task121.graph.Graph;
 
 /**
  * Алгоритм топологической сортировки вершин ориентированного графа.

@@ -1,4 +1,4 @@
-package ru.nsu.vkuznetsov.task121.graph.algorithm;
+package ru.nsu.vkuznetsov.task121.graph.algorithms;
 
 import java.util.ArrayDeque;
 import java.util.ArrayList;
@@ -6,7 +6,9 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Queue;
-import ru.nsu.vkuznetsov.task121.graph.Graph;
+
+import ru.nsu.vkuznetsov.task121.graph.api.Graph;
+import ru.nsu.vkuznetsov.task121.graph.api.TopologicalSort;
 
 /**
  * Топологическая сортировка алгоритмом Кана.
@@ -51,7 +53,7 @@ public class KahnTopologicalSort<V> implements TopologicalSort<V> {
 
         if (result.size() != graph.vertexCount()) {
             throw new IllegalStateException(
-                    "Граф содержит цикл: отсортировано " + result.size()
+                    "Graph contains a cycle: sorted " + result.size()
                             + " из " + graph.vertexCount() + " вершин");
         }
         return result;

@@ -5,8 +5,8 @@ import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Map;
 import java.util.Set;
-import ru.nsu.vkuznetsov.task121.graph.AbstractGraph;
-import ru.nsu.vkuznetsov.task121.graph.Edge;
+import ru.nsu.vkuznetsov.task121.graph.core.AbstractGraph;
+import ru.nsu.vkuznetsov.task121.graph.api.Edge;
 
 /**
  * Граф в виде матрицы смежности.

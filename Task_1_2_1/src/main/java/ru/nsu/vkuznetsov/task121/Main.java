@@ -1,19 +1,19 @@
 package ru.nsu.vkuznetsov.task121;
 
 import java.io.IOException;
-import java.nio.file.Path;
+import java.io.InputStream;
 import java.util.List;
 import java.util.Scanner;
-import ru.nsu.vkuznetsov.task121.graph.Graph;
-import ru.nsu.vkuznetsov.task121.graph.algorithm.KahnTopologicalSort;
-import ru.nsu.vkuznetsov.task121.graph.algorithm.TopologicalSort;
+import ru.nsu.vkuznetsov.task121.graph.algorithms.KahnTopologicalSort;
+import ru.nsu.vkuznetsov.task121.graph.api.Graph;
+import ru.nsu.vkuznetsov.task121.graph.api.TopologicalSort;
 import ru.nsu.vkuznetsov.task121.graph.impl.AdjacencyListGraph;
 import ru.nsu.vkuznetsov.task121.graph.impl.AdjacencyMatrixGraph;
 import ru.nsu.vkuznetsov.task121.graph.impl.IncidenceMatrixGraph;
 import ru.nsu.vkuznetsov.task121.graph.io.GraphReader;
 
 /**
- * Точка входа: читает граф из файла, сравнивает три реализации
+ * Точка входа: читает граф из ресурсов, сравнивает три реализации
  * и запускает топологическую сортировку.
  */
 public class Main {
@@ -24,28 +24,33 @@ public class Main {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
 
-        System.out.print("Введите путь к файлу с графом: ");
-        String input = scanner.nextLine().trim();
+        System.out.print("Enter graph file name (e.g. graph.txt): ");
+        String fileName = scanner.nextLine().trim();
 
-        if (input.isEmpty()) {
-            System.err.println("Путь не задан. Завершение работы.");
+        if (fileName.isEmpty()) {
+            System.err.println("File name is empty. Exiting.");
             return;
         }
 
-        Path path = Path.of(input);
+        String resourcePath = "/" + fileName;
 
-        try {
-            Graph<String> list = GraphReader.read(
-                    path, true, s -> s, AdjacencyListGraph::new);
-            Graph<String> matrix = GraphReader.read(
-                    path, true, s -> s, AdjacencyMatrixGraph::new);
-            Graph<String> incidence = GraphReader.read(
-                    path, true, s -> s, IncidenceMatrixGraph::new);
+        try (InputStream is1 = Main.class.getResourceAsStream(resourcePath);
+             InputStream is2 = Main.class.getResourceAsStream(resourcePath);
+             InputStream is3 = Main.class.getResourceAsStream(resourcePath)) {
+
+            if (is1 == null) {
+                System.err.println("File '" + fileName + "' not found in resources.");
+                return;
+            }
+
+            Graph<String> list = GraphReader.read(is1, true, s -> s, AdjacencyListGraph::new);
+            Graph<String> matrix = GraphReader.read(is2, true, s -> s, AdjacencyMatrixGraph::new);
+            Graph<String> incidence = GraphReader.read(is3, true, s -> s, IncidenceMatrixGraph::new);
 
             System.out.println();
-            System.out.println("Список смежности:      " + list);
-            System.out.println("Матрица смежности:     " + matrix);
-            System.out.println("Матрица инцидентности: " + incidence);
+            System.out.println("Adjacency list:      " + list);
+            System.out.println("Adjacency matrix:    " + matrix);
+            System.out.println("Incidence matrix:    " + incidence);
             System.out.println();
 
             System.out.println("list.equals(matrix)      = " + list.equals(matrix));
@@ -54,15 +59,14 @@ public class Main {
 
             TopologicalSort<String> sorter = new KahnTopologicalSort<>();
             List<String> order = sorter.sort(list);
-            System.out.println("Топологическая сортировка: " + order);
+            System.out.println("Topological sort: " + order);
 
         } catch (IOException e) {
-            System.err.println("Ошибка чтения файла '" + path.toAbsolutePath() + "': "
-                    + e.getMessage());
+            System.err.println("I/O error while reading file: " + e.getMessage());
         } catch (IllegalStateException e) {
-            System.err.println("Ошибка сортировки: " + e.getMessage());
+            System.err.println("Sort error: " + e.getMessage());
         } catch (IllegalArgumentException e) {
-            System.err.println("Ошибка в данных графа: " + e.getMessage());
+            System.err.println("Graph data error: " + e.getMessage());
         }
     }
 }

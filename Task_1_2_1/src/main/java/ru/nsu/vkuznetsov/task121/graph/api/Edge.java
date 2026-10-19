@@ -1,4 +1,4 @@
-package ru.nsu.vkuznetsov.task121.graph;
+package ru.nsu.vkuznetsov.task121.graph.api;
 
 /**
  * Ребро графа. Направлено из {@code from} в {@code to}.

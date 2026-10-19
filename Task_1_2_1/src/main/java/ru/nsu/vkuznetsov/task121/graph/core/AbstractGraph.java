@@ -1,4 +1,6 @@
-package ru.nsu.vkuznetsov.task121.graph;
+package ru.nsu.vkuznetsov.task121.graph.core;
+
+import ru.nsu.vkuznetsov.task121.graph.api.Graph;
 
 import java.util.Objects;
 import java.util.StringJoiner;

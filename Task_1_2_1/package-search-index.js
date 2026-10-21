@@ -1,0 +1,1 @@
+packageSearchIndex = [{"l":"All Packages","u":"allpackages-index.html"},{"l":"ru.nsu.vkuznetsov.task121"},{"l":"ru.nsu.vkuznetsov.task121.graph.algorithms"},{"l":"ru.nsu.vkuznetsov.task121.graph.io"},{"l":"ru.nsu.vkuznetsov.task121.graph.model"},{"l":"ru.nsu.vkuznetsov.task121.graph.model.impl"}];updateSearchResults();

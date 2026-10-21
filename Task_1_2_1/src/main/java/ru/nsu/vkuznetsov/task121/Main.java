@@ -5,12 +5,12 @@ import java.io.InputStream;
 import java.util.List;
 import java.util.Scanner;
 import ru.nsu.vkuznetsov.task121.graph.algorithms.KahnTopologicalSort;
-import ru.nsu.vkuznetsov.task121.graph.model.Graph;
 import ru.nsu.vkuznetsov.task121.graph.algorithms.TopologicalSort;
+import ru.nsu.vkuznetsov.task121.graph.io.GraphReader;
+import ru.nsu.vkuznetsov.task121.graph.model.Graph;
 import ru.nsu.vkuznetsov.task121.graph.model.impl.AdjacencyListGraph;
 import ru.nsu.vkuznetsov.task121.graph.model.impl.AdjacencyMatrixGraph;
 import ru.nsu.vkuznetsov.task121.graph.model.impl.IncidenceMatrixGraph;
-import ru.nsu.vkuznetsov.task121.graph.io.GraphReader;
 
 /**
  * Точка входа: читает граф из ресурсов, сравнивает три реализации
@@ -19,6 +19,8 @@ import ru.nsu.vkuznetsov.task121.graph.io.GraphReader;
 public class Main {
 
     /**
+     * Запускает программу.
+     *
      * @param args аргументы командной строки (не используются)
      */
     public static void main(String[] args) {

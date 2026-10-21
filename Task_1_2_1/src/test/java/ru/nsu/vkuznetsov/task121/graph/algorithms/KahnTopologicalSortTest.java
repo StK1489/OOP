@@ -1,11 +1,13 @@
 package ru.nsu.vkuznetsov.task121.graph.algorithms;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
+import static org.junit.jupiter.api.Assertions.assertTrue;
+
+import java.util.List;
 import org.junit.jupiter.api.Test;
 import ru.nsu.vkuznetsov.task121.graph.model.Graph;
 import ru.nsu.vkuznetsov.task121.graph.model.impl.AdjacencyListGraph;
-
-import java.util.List;
-import static org.junit.jupiter.api.Assertions.*;
 
 class KahnTopologicalSortTest {
     @Test

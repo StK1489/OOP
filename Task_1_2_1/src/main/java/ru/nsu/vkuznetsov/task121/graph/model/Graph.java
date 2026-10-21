@@ -1,4 +1,4 @@
-package ru.nsu.vkuznetsov.task121.graph.api;
+package ru.nsu.vkuznetsov.task121.graph.model;
 
 import java.util.Set;
 

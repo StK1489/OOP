@@ -5,11 +5,11 @@ import java.io.InputStream;
 import java.util.List;
 import java.util.Scanner;
 import ru.nsu.vkuznetsov.task121.graph.algorithms.KahnTopologicalSort;
-import ru.nsu.vkuznetsov.task121.graph.api.Graph;
-import ru.nsu.vkuznetsov.task121.graph.api.TopologicalSort;
-import ru.nsu.vkuznetsov.task121.graph.impl.AdjacencyListGraph;
-import ru.nsu.vkuznetsov.task121.graph.impl.AdjacencyMatrixGraph;
-import ru.nsu.vkuznetsov.task121.graph.impl.IncidenceMatrixGraph;
+import ru.nsu.vkuznetsov.task121.graph.model.Graph;
+import ru.nsu.vkuznetsov.task121.graph.algorithms.TopologicalSort;
+import ru.nsu.vkuznetsov.task121.graph.model.impl.AdjacencyListGraph;
+import ru.nsu.vkuznetsov.task121.graph.model.impl.AdjacencyMatrixGraph;
+import ru.nsu.vkuznetsov.task121.graph.model.impl.IncidenceMatrixGraph;
 import ru.nsu.vkuznetsov.task121.graph.io.GraphReader;
 
 /**

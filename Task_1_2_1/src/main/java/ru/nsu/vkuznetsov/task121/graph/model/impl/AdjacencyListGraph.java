@@ -1,12 +1,12 @@
-package ru.nsu.vkuznetsov.task121.graph.impl;
+package ru.nsu.vkuznetsov.task121.graph.model.impl;
 
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Map;
 import java.util.Set;
-import ru.nsu.vkuznetsov.task121.graph.core.AbstractGraph;
-import ru.nsu.vkuznetsov.task121.graph.api.Edge;
+import ru.nsu.vkuznetsov.task121.graph.model.AbstractGraph;
+import ru.nsu.vkuznetsov.task121.graph.model.Edge;
 
 /**
  * Граф в виде списка смежности.

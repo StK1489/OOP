@@ -1,23 +1,15 @@
-package ru.nsu.vkuznetsov.task121.graph.impl;
+package ru.nsu.vkuznetsov.task121.graph.model.impl;
 
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Map;
 import java.util.Set;
-import ru.nsu.vkuznetsov.task121.graph.core.AbstractGraph;
-import ru.nsu.vkuznetsov.task121.graph.api.Edge;
+import ru.nsu.vkuznetsov.task121.graph.model.AbstractGraph;
+import ru.nsu.vkuznetsov.task121.graph.model.Edge;
 
 /**
  * Граф в виде матрицы инцидентности.
- *
- * <p>Строки матрицы соответствуют вершинам, столбцы — рёбрам.
- * В ячейке хранится коэффициент инцидентности:
- * {@code +1}, если вершина — начало ребра,
- * {@code -1}, если вершина — конец (для ориентированного графа),
- * {@code 0} — если вершина не инцидентна ребру.
- *
- * <p>Для неориентированного графа обе концевые вершины имеют {@code +1}.
  *
  * @param <V> тип вершины
  */
@@ -27,8 +19,6 @@ public class IncidenceMatrixGraph<V> extends AbstractGraph<V> {
     private final Set<Edge<V>> edgeSet = new HashSet<>();
 
     /**
-     * Создаёт граф в виде матрицы инцидентности.
-     *
      * @param directed {@code true}, если граф ориентированный
      */
     public IncidenceMatrixGraph(boolean directed) {
@@ -95,17 +85,31 @@ public class IncidenceMatrixGraph<V> extends AbstractGraph<V> {
         if (!hasEdge(from, to)) {
             return;
         }
-        Edge<V> edge = new Edge<>(from, to);
-        edgeSet.remove(edge);
+        Edge<V> edge1 = new Edge<>(from, to);
+        Edge<V> edge2 = new Edge<>(to, from);
+
+        edgeSet.remove(edge1);
+        edgeSet.remove(edge2);
+
         for (Map<Edge<V>, Integer> row : incidence.values()) {
-            row.remove(edge);
+            row.remove(edge1);
+            row.remove(edge2);
         }
     }
 
     @Override
     public boolean hasEdge(V from, V to) {
-        return incidence.getOrDefault(from, Collections.emptyMap())
-                .containsKey(new Edge<>(from, to));
+        Map<Edge<V>, Integer> row = incidence.get(from);
+        if (row == null) {
+            return false;
+        }
+        if (row.containsKey(new Edge<>(from, to))) {
+            return true;
+        }
+        if (!isDirected() && row.containsKey(new Edge<>(to, from))) {
+            return true;
+        }
+        return false;
     }
 
     @Override

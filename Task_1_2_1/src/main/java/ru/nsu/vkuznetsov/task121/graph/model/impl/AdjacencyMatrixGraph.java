@@ -1,12 +1,12 @@
-package ru.nsu.vkuznetsov.task121.graph.impl;
+package ru.nsu.vkuznetsov.task121.graph.model.impl;
 
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Map;
 import java.util.Set;
-import ru.nsu.vkuznetsov.task121.graph.core.AbstractGraph;
-import ru.nsu.vkuznetsov.task121.graph.api.Edge;
+import ru.nsu.vkuznetsov.task121.graph.model.AbstractGraph;
+import ru.nsu.vkuznetsov.task121.graph.model.Edge;
 
 /**
  * Граф в виде матрицы смежности.
@@ -109,7 +109,7 @@ public class AdjacencyMatrixGraph<V> extends AbstractGraph<V> {
         if (row == null) {
             return false;
         }
-        return Boolean.TRUE.equals(row.get(to));
+        return row.getOrDefault(to, false);
     }
 
     @Override
@@ -129,13 +129,13 @@ public class AdjacencyMatrixGraph<V> extends AbstractGraph<V> {
         }
         Set<V> result = new HashSet<>();
         for (Map.Entry<V, Boolean> entry : matrix.get(vertex).entrySet()) {
-            if (Boolean.TRUE.equals(entry.getValue())) {
+            if (entry.getValue()) {
                 result.add(entry.getKey());
             }
         }
         if (!isDirected()) {
             for (Map.Entry<V, Map<V, Boolean>> row : matrix.entrySet()) {
-                if (Boolean.TRUE.equals(row.getValue().get(vertex))) {
+                if (row.getValue().getOrDefault(vertex, false)) {
                     result.add(row.getKey());
                 }
             }
@@ -151,7 +151,7 @@ public class AdjacencyMatrixGraph<V> extends AbstractGraph<V> {
         if (isDirected()) {
             int count = 0;
             for (Map<V, Boolean> row : matrix.values()) {
-                if (Boolean.TRUE.equals(row.get(vertex))) {
+                if (row.getOrDefault(vertex, false)) {
                     count++;
                 }
             }

@@ -18,6 +18,9 @@ public class HashTable<K, V> implements Iterable<Entry<K, V>> {
     private int size;
     private int modCount;
 
+    /**
+     * Создает пустую хеш-таблицу.
+     */
     @SuppressWarnings("unchecked")
     public HashTable() {
         table = (Entry<K, V>[]) new Entry[INITIAL_CAPACITY];
@@ -32,6 +35,12 @@ public class HashTable<K, V> implements Iterable<Entry<K, V>> {
         return (key.hashCode() & 0x7FFFFFFF) % capacity;
     }
 
+    /**
+     * Добавляет пару ключ-значение в таблицу.
+     *
+     * @param key   ключ
+     * @param value значение
+     */
     public void put(K key, V value) {
         int index = getIndex(key, table.length);
         Entry<K, V> current = table[index];
@@ -51,6 +60,13 @@ public class HashTable<K, V> implements Iterable<Entry<K, V>> {
         }
     }
 
+    /**
+     * Обновляет значение по существующему ключу.
+     *
+     * @param key   ключ
+     * @param value новое значение
+     * @throws IllegalArgumentException если ключ не найден
+     */
     public void update(K key, V value) {
         int index = getIndex(key, table.length);
         Entry<K, V> current = table[index];
@@ -64,6 +80,12 @@ public class HashTable<K, V> implements Iterable<Entry<K, V>> {
         throw new IllegalArgumentException("Key not found for update: " + key);
     }
 
+    /**
+     * Возвращает значение по ключу.
+     *
+     * @param key ключ
+     * @return значение или {@code null}, если ключ не найден
+     */
     public V get(K key) {
         int index = getIndex(key, table.length);
         Entry<K, V> current = table[index];
@@ -76,6 +98,12 @@ public class HashTable<K, V> implements Iterable<Entry<K, V>> {
         return null;
     }
 
+    /**
+     * Удаляет пару по ключу.
+     *
+     * @param key ключ
+     * @return удаленное значение или {@code null}, если ключ не найден
+     */
     public V remove(K key) {
         int index = getIndex(key, table.length);
         Entry<K, V> current = table[index];
@@ -98,6 +126,12 @@ public class HashTable<K, V> implements Iterable<Entry<K, V>> {
         return null;
     }
 
+    /**
+     * Проверяет наличие ключа в таблице.
+     *
+     * @param key ключ
+     * @return {@code true}, если ключ найден
+     */
     public boolean containsKey(K key) {
         int index = getIndex(key, table.length);
         Entry<K, V> current = table[index];
@@ -110,18 +144,39 @@ public class HashTable<K, V> implements Iterable<Entry<K, V>> {
         return false;
     }
 
+    /**
+     * Возвращает количество элементов в таблице.
+     *
+     * @return размер таблицы
+     */
     public int size() {
         return size;
     }
 
+    /**
+     * Возвращает счетчик модификаций (для итератора).
+     *
+     * @return счетчик модификаций
+     */
     public int getModCount() {
         return modCount;
     }
 
+    /**
+     * Возвращает емкость внутреннего массива.
+     *
+     * @return емкость
+     */
     public int getCapacity() {
         return table.length;
     }
 
+    /**
+     * Возвращает первый узел в бакете по индексу.
+     *
+     * @param index индекс бакета
+     * @return первый узел бакета
+     */
     public Entry<K, V> getBucket(int index) {
         return table[index];
     }
@@ -147,19 +202,29 @@ public class HashTable<K, V> implements Iterable<Entry<K, V>> {
 
     @Override
     public boolean equals(Object obj) {
-        if (this == obj) return true;
-        if (!(obj instanceof HashTable<?, ?>)) return false;
+        if (this == obj) {
+            return true;
+        }
+        if (!(obj instanceof HashTable<?, ?>)) {
+            return false;
+        }
 
         @SuppressWarnings("unchecked")
         HashTable<K, V> other = (HashTable<K, V>) obj;
 
-        if (this.size != other.size) return false;
+        if (this.size != other.size) {
+            return false;
+        }
 
         try {
             for (Entry<K, V> entry : this) {
                 Object otherVal = other.get(entry.getKey());
-                if (otherVal == null && !other.containsKey(entry.getKey())) return false;
-                if (!Objects.equals(entry.getValue(), otherVal)) return false;
+                if (otherVal == null && !other.containsKey(entry.getKey())) {
+                    return false;
+                }
+                if (!Objects.equals(entry.getValue(), otherVal)) {
+                    return false;
+                }
             }
         } catch (ClassCastException | NullPointerException e) {
             return false;
@@ -171,8 +236,8 @@ public class HashTable<K, V> implements Iterable<Entry<K, V>> {
     public int hashCode() {
         int hash = 0;
         for (Entry<K, V> entry : this) {
-            hash += (entry.getKey() == null ? 0 : entry.getKey().hashCode()) ^
-                    (entry.getValue() == null ? 0 : entry.getValue().hashCode());
+            hash += (entry.getKey() == null ? 0 : entry.getKey().hashCode())
+                    ^ (entry.getValue() == null ? 0 : entry.getValue().hashCode());
         }
         return hash;
     }
@@ -182,7 +247,9 @@ public class HashTable<K, V> implements Iterable<Entry<K, V>> {
         StringBuilder sb = new StringBuilder("{");
         boolean first = true;
         for (Entry<K, V> entry : this) {
-            if (!first) sb.append(", ");
+            if (!first) {
+                sb.append(", ");
+            }
             sb.append(entry.getKey()).append("=").append(entry.getValue());
             first = false;
         }
@@ -194,5 +261,4 @@ public class HashTable<K, V> implements Iterable<Entry<K, V>> {
     public Iterator<Entry<K, V>> iterator() {
         return new HashTableIterator<>(this);
     }
-
 }

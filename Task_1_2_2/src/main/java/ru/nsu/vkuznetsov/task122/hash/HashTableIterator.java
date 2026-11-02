@@ -6,6 +6,9 @@ import java.util.NoSuchElementException;
 
 /**
  * Итератор для обхода элементов HashTable.
+ *
+ * @param <K> тип ключа
+ * @param <V> тип значения
  */
 public class HashTableIterator<K, V> implements Iterator<Entry<K, V>> {
     private final HashTable<K, V> table;
@@ -13,6 +16,11 @@ public class HashTableIterator<K, V> implements Iterator<Entry<K, V>> {
     private int currentIndex;
     private Entry<K, V> nextEntry;
 
+    /**
+     * Создает итератор для заданной таблицы.
+     *
+     * @param table хеш-таблица для обхода
+     */
     public HashTableIterator(HashTable<K, V> table) {
         this.table = table;
         this.expectedModCount = table.getModCount();
@@ -29,7 +37,9 @@ public class HashTableIterator<K, V> implements Iterator<Entry<K, V>> {
         while (currentIndex < table.getCapacity()) {
             nextEntry = table.getBucket(currentIndex);
             currentIndex++;
-            if (nextEntry != null) return;
+            if (nextEntry != null) {
+                return;
+            }
         }
         nextEntry = null;
     }
@@ -40,12 +50,22 @@ public class HashTableIterator<K, V> implements Iterator<Entry<K, V>> {
         }
     }
 
+    /**
+     * Проверяет наличие следующего элемента.
+     *
+     * @return {@code true}, если есть следующий элемент
+     */
     @Override
     public boolean hasNext() {
         checkModification();
         return nextEntry != null;
     }
 
+    /**
+     * Возвращает следующий элемент в обходе.
+     *
+     * @return следующий узел
+     */
     @Override
     public Entry<K, V> next() {
         checkModification();

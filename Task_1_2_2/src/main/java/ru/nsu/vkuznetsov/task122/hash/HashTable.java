@@ -1,6 +1,8 @@
 package ru.nsu.vkuznetsov.task122.hash;
 
+import java.util.ConcurrentModificationException;
 import java.util.Iterator;
+import java.util.NoSuchElementException;
 import java.util.Objects;
 
 /**
@@ -9,7 +11,7 @@ import java.util.Objects;
  * @param <K> тип ключей
  * @param <V> тип значений
  */
-public class HashTable<K, V> implements Iterable<Entry<K, V>> {
+public class HashTable<K, V> implements Iterable<HashTable.Entry<K, V>> {
 
     private static final int INITIAL_CAPACITY = 16;
     private static final float LOAD_FACTOR = 0.75f;
@@ -19,7 +21,7 @@ public class HashTable<K, V> implements Iterable<Entry<K, V>> {
     private int modCount;
 
     /**
-     * Создает пустую хеш-таблицу.
+     * Создаёт пустую хеш-таблицу.
      */
     @SuppressWarnings("unchecked")
     public HashTable() {
@@ -36,10 +38,11 @@ public class HashTable<K, V> implements Iterable<Entry<K, V>> {
     }
 
     /**
-     * Добавляет пару ключ-значение в таблицу.
+     * Добавляет пару ключ-значение или заменяет значение существующего ключа.
      *
-     * @param key   ключ
+     * @param key ключ
      * @param value значение
+     * @throws IllegalArgumentException если ключ равен {@code null}
      */
     public void put(K key, V value) {
         int index = getIndex(key, table.length);
@@ -63,9 +66,9 @@ public class HashTable<K, V> implements Iterable<Entry<K, V>> {
     /**
      * Обновляет значение по существующему ключу.
      *
-     * @param key   ключ
+     * @param key ключ
      * @param value новое значение
-     * @throws IllegalArgumentException если ключ не найден
+     * @throws IllegalArgumentException если ключ равен {@code null} или отсутствует
      */
     public void update(K key, V value) {
         int index = getIndex(key, table.length);
@@ -84,7 +87,8 @@ public class HashTable<K, V> implements Iterable<Entry<K, V>> {
      * Возвращает значение по ключу.
      *
      * @param key ключ
-     * @return значение или {@code null}, если ключ не найден
+     * @return значение или {@code null}, если ключ отсутствует
+     * @throws IllegalArgumentException если ключ равен {@code null}
      */
     public V get(K key) {
         int index = getIndex(key, table.length);
@@ -99,10 +103,11 @@ public class HashTable<K, V> implements Iterable<Entry<K, V>> {
     }
 
     /**
-     * Удаляет пару по ключу.
+     * Удаляет пару ключ-значение по ключу.
      *
      * @param key ключ
-     * @return удаленное значение или {@code null}, если ключ не найден
+     * @return удалённое значение или {@code null}, если ключ отсутствует
+     * @throws IllegalArgumentException если ключ равен {@code null}
      */
     public V remove(K key) {
         int index = getIndex(key, table.length);
@@ -131,6 +136,7 @@ public class HashTable<K, V> implements Iterable<Entry<K, V>> {
      *
      * @param key ключ
      * @return {@code true}, если ключ найден
+     * @throws IllegalArgumentException если ключ равен {@code null}
      */
     public boolean containsKey(K key) {
         int index = getIndex(key, table.length);
@@ -144,41 +150,8 @@ public class HashTable<K, V> implements Iterable<Entry<K, V>> {
         return false;
     }
 
-    /**
-     * Возвращает количество элементов в таблице.
-     *
-     * @return размер таблицы
-     */
     public int size() {
         return size;
-    }
-
-    /**
-     * Возвращает счетчик модификаций (для итератора).
-     *
-     * @return счетчик модификаций
-     */
-    public int getModCount() {
-        return modCount;
-    }
-
-    /**
-     * Возвращает емкость внутреннего массива.
-     *
-     * @return емкость
-     */
-    public int getCapacity() {
-        return table.length;
-    }
-
-    /**
-     * Возвращает первый узел в бакете по индексу.
-     *
-     * @param index индекс бакета
-     * @return первый узел бакета
-     */
-    public Entry<K, V> getBucket(int index) {
-        return table[index];
     }
 
     @SuppressWarnings("unchecked")
@@ -190,7 +163,7 @@ public class HashTable<K, V> implements Iterable<Entry<K, V>> {
         for (Entry<K, V> head : oldTable) {
             Entry<K, V> current = head;
             while (current != null) {
-                Entry<K, V> next = current.getNext();
+                final Entry<K, V> next = current.getNext();
                 int newIndex = getIndex(current.getKey(), table.length);
                 current.setNext(table[newIndex]);
                 table[newIndex] = current;
@@ -259,6 +232,113 @@ public class HashTable<K, V> implements Iterable<Entry<K, V>> {
 
     @Override
     public Iterator<Entry<K, V>> iterator() {
-        return new HashTableIterator<>(this);
+        return new HashTableIterator();
+    }
+
+    /**
+     * Узел хеш-таблицы, хранящий пару "ключ-значение".
+     *
+     * @param <K> тип ключа
+     * @param <V> тип значения
+     */
+    public static class Entry<K, V> {
+        private final K key;
+        private V value;
+        private Entry<K, V> next;
+
+        /**
+         * Создаёт узел хеш-таблицы.
+         *
+         * @param key ключ
+         * @param value значение
+         * @param next следующий узел цепочки
+         */
+        private Entry(K key, V value, Entry<K, V> next) {
+            this.key = key;
+            this.value = value;
+            this.next = next;
+        }
+
+        public K getKey() {
+            return key;
+        }
+
+        public V getValue() {
+            return value;
+        }
+
+        public void setValue(V value) {
+            this.value = value;
+        }
+
+        private Entry<K, V> getNext() {
+            return next;
+        }
+
+        private void setNext(Entry<K, V> next) {
+            this.next = next;
+        }
+
+        @Override
+        public String toString() {
+            return key + "=" + value;
+        }
+    }
+
+    /**
+     * Итератор для обхода элементов HashTable.
+     */
+    private class HashTableIterator implements Iterator<Entry<K, V>> {
+        private final int expectedModCount;
+        private int currentIndex;
+        private Entry<K, V> nextEntry;
+
+        /**
+         * Создаёт итератор хеш-таблицы.
+         */
+        private HashTableIterator() {
+            this.expectedModCount = modCount;
+            this.currentIndex = 0;
+            this.nextEntry = null;
+            advance();
+        }
+
+        private void advance() {
+            if (nextEntry != null && nextEntry.getNext() != null) {
+                nextEntry = nextEntry.getNext();
+                return;
+            }
+            while (currentIndex < table.length) {
+                nextEntry = table[currentIndex];
+                currentIndex++;
+                if (nextEntry != null) {
+                    return;
+                }
+            }
+            nextEntry = null;
+        }
+
+        private void checkModification() {
+            if (modCount != expectedModCount) {
+                throw new ConcurrentModificationException("Table modified during iteration");
+            }
+        }
+
+        @Override
+        public boolean hasNext() {
+            checkModification();
+            return nextEntry != null;
+        }
+
+        @Override
+        public Entry<K, V> next() {
+            checkModification();
+            if (nextEntry == null) {
+                throw new NoSuchElementException();
+            }
+            Entry<K, V> result = nextEntry;
+            advance();
+            return result;
+        }
     }
 }

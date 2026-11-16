@@ -1,7 +1,10 @@
 package ru.nsu.vkuznetsov.task131.finder;
 
+import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.Reader;
+import java.nio.file.Files;
+import java.nio.file.Path;
 import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
@@ -11,7 +14,7 @@ import java.util.List;
  */
 public final class SubstringFinder {
 
-    private static final int CHUNK_SIZE = 8192; // Размер буфера: 8 КБ
+    private static final int CHUNK_SIZE = 8192; // Размер буфера для чтения - 8 КБ
 
     private SubstringFinder() {
     }
@@ -25,9 +28,9 @@ public final class SubstringFinder {
      * @param reader поток символов
      * @param target искомая подстрока
      * @return список индексов начала вхождений
-     * @throws NullPointerException если поток равен null
+     * @throws NullPointerException     если поток равен null
      * @throws IllegalArgumentException если подстрока равна null
-     * @throws IOException если произошла ошибка чтения
+     * @throws IOException              если произошла ошибка чтения
      */
     public static List<Long> find(Reader reader, String target) throws IOException {
         if (reader == null) {
@@ -42,7 +45,7 @@ public final class SubstringFinder {
 
         List<Integer> pattern = target.codePoints().boxed().toList();
         List<Integer> window = new LinkedList<>();
-        Reader source = new java.io.BufferedReader(reader);
+        Reader source = new BufferedReader(reader);
         List<Integer> tokens = new ArrayList<>(CHUNK_SIZE);
         List<Long> result = new ArrayList<>();
         long position = 0;
@@ -66,21 +69,29 @@ public final class SubstringFinder {
      * Открывает файл в UTF-8, выполняет поиск и закрывает файл.
      *
      * @param filename имя файла
-     * @param target искомая подстрока
+     * @param target   искомая подстрока
      * @return список индексов начала вхождений
      * @throws IllegalArgumentException если имя файла пустое или один из аргументов равен null
-     * @throws IOException если файл нельзя открыть, прочитать или декодировать
+     * @throws IOException              если файл нельзя открыть, прочитать или декодировать
      */
     public static List<Long> find(String filename, String target) throws IOException {
         if (filename == null || filename.isBlank()) {
             throw new IllegalArgumentException("File name cannot be empty");
         }
-        try (Reader reader = java.nio.file.Files.newBufferedReader(
-                java.nio.file.Path.of(filename))) {
+        try (Reader reader = Files.newBufferedReader(Path.of(filename))) {
             return find(reader, target);
         }
     }
 
+    /**
+     * Читает порцию символов (чанк) из потока в список токенов.
+     * Метод читает до {@code CHUNK_SIZE} токенов или до конца потока.
+     *
+     * @param reader поток символов
+     * @param tokens список, в который сохраняются прочитанные токены
+     * @return {@code true}, если были прочитаны данные, {@code false} если поток закончился
+     * @throws IOException если произошла ошибка чтения
+     */
     private static boolean readChunk(Reader reader, List<Integer> tokens)
             throws IOException {
         tokens.clear();
@@ -94,6 +105,15 @@ public final class SubstringFinder {
         return !tokens.isEmpty();
     }
 
+    /**
+     * Читает один токен (кодовую точку Unicode).
+     * Корректно обрабатывает суррогатные пары (например, эмодзи),
+     * объединяя два символа в один.
+     *
+     * @param reader поток символов
+     * @return код символа (от 0 до 0x10FFFF) или -1, если достигнут конец потока
+     * @throws IOException если произошла ошибка чтения
+     */
     private static int readToken(Reader reader) throws IOException {
         int first = reader.read();
         if (first == -1 || !Character.isHighSurrogate((char) first)) {

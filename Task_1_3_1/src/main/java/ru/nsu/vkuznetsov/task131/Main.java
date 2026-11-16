@@ -1,11 +1,10 @@
 package ru.nsu.vkuznetsov.task131;
 
-import ru.nsu.vkuznetsov.task131.finder.SubstringFinder;
-
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.List;
+import ru.nsu.vkuznetsov.task131.finder.SubstringFinder;
 
 /**
  * Демонстрация поиска подстрок в UTF-8-файле.

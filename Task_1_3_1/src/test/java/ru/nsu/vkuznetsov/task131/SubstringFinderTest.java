@@ -25,9 +25,7 @@ class SubstringFinderTest {
     void testFindInReader() throws IOException {
         String text = "абракадабра";
         StringReader reader = new StringReader(text);
-
         List<Long> result = SubstringFinder.find(reader, "бра");
-
         assertEquals(List.of(1L, 8L), result);
     }
 
@@ -38,9 +36,7 @@ class SubstringFinderTest {
     void testOverlappingMatches() throws IOException {
         String text = "аааа";
         StringReader reader = new StringReader(text);
-
         List<Long> result = SubstringFinder.find(reader, "аа");
-
         assertEquals(List.of(0L, 1L, 2L), result);
     }
 
@@ -50,9 +46,7 @@ class SubstringFinderTest {
     @Test
     void testNoMatches() throws IOException {
         StringReader reader = new StringReader("Привет, мир!");
-
         List<Long> result = SubstringFinder.find(reader, "кот");
-
         assertTrue(result.isEmpty());
     }
 
@@ -62,9 +56,7 @@ class SubstringFinderTest {
     @Test
     void testEmptyTarget() throws IOException {
         StringReader reader = new StringReader("Любой текст");
-
         List<Long> result = SubstringFinder.find(reader, "");
-
         assertTrue(result.isEmpty());
     }
 

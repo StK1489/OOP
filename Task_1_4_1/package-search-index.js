@@ -1,0 +1,1 @@
+packageSearchIndex = [{"l":"All Packages","u":"allpackages-index.html"},{"l":"ru.nsu.vkuznetsov.task141"},{"l":"ru.nsu.vkuznetsov.task141.model"},{"l":"ru.nsu.vkuznetsov.task141.service"}];updateSearchResults();
